@@ -16,6 +16,16 @@ export interface AppConfig {
     port: number;
     password: string;
   };
+  wechat: {
+    appId: string;
+    appSecret: string;
+  };
+  jwt: {
+    secret: string;
+    expiresIn: string;
+    refreshSecret: string;
+    refreshExpiresIn: string;
+  };
 }
 
 export default (): AppConfig => ({
@@ -35,5 +45,15 @@ export default (): AppConfig => ({
     host: process.env.REDIS_HOST || 'localhost',
     port: parseInt(process.env.REDIS_PORT || '6379', 10),
     password: process.env.REDIS_PASSWORD || '',
+  },
+  wechat: {
+    appId: process.env.WECHAT_APP_ID || '',
+    appSecret: process.env.WECHAT_APP_SECRET || '',
+  },
+  jwt: {
+    secret: process.env.JWT_SECRET || 'default_secret',
+    expiresIn: process.env.JWT_EXPIRES_IN || '7d',
+    refreshSecret: process.env.JWT_REFRESH_SECRET || 'default_refresh_secret',
+    refreshExpiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '30d',
   },
 });
