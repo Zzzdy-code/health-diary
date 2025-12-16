@@ -10,6 +10,7 @@ import { User } from './database/entities/user.entity';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { ScheduleModule } from './schedule/schedule.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
     TypeOrmModule.forFeature([User]),
     UserModule,
     AuthModule,
+    ScheduleModule,
   ],
   controllers: [AppController],
   providers: [
